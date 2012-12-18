@@ -3,8 +3,6 @@
     <wb-module deploy-name="tx-component-auth">
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
         <property name="context-root" value="tx-component-auth"/>
         <property name="java-output-path" value="/tx-component-auth/target/classes"/>
     </wb-module>
