@@ -49,7 +49,7 @@ public class AuthContext implements FactoryBean<AuthContext>,
     private static final Logger logger = LoggerFactory.getLogger(AuthContext.class);
     
     /** 懒汉模式工厂实例  */
-    private static final AuthContext context = new AuthContext();
+    private static AuthContext context;
     
     /**
      * 权限检查器映射，以权限
@@ -167,6 +167,9 @@ public class AuthContext implements FactoryBean<AuthContext>,
     @Override
     public void afterPropertiesSet() throws Exception {
         loadAuthConfig();
+        
+        //将当前唯一实例附给context实例
+        context = this;
     }
     
     /**
