@@ -248,7 +248,7 @@ public class AuthContext implements FactoryBean<AuthContext>,
             logger.info("加载权限检查器：权限类型:'{}':检查器类：'{}'",
                     authCheckerTemp.getCheckAuthType(),
                     authCheckerTemp.getClass().getName());
-            authCheckerMapping.put(authCheckerTemp.getCheckAuthType(),
+            tempAuthCheckerMapping.put(authCheckerTemp.getCheckAuthType(),
                     authCheckerTemp);
         }
         
