@@ -49,7 +49,7 @@ public class AuthContext implements FactoryBean<AuthContext>,
     private static final Logger logger = LoggerFactory.getLogger(AuthContext.class);
     
     /** 懒汉模式工厂实例  */
-    private static final AuthContext context = new AuthContext();
+    private static AuthContext context;
     
     /**
      * 权限检查器映射，以权限
@@ -167,6 +167,8 @@ public class AuthContext implements FactoryBean<AuthContext>,
     @Override
     public void afterPropertiesSet() throws Exception {
         loadAuthConfig();
+        
+        context = this;
     }
     
     /**
@@ -224,7 +226,7 @@ public class AuthContext implements FactoryBean<AuthContext>,
             for (AuthItem authItem : authItemSet) {
                 tempAllAuthItemRef.add(new DefaultAuthItemRef(authItem));
             }
-            superAdminAllAuthItemRef = tempAllAuthItemRef;
+            tempAllAuthItemRef = tempAllAuthItemRef;
         }
         
         authItemMapping = tempAuthItemMapping;
@@ -248,7 +250,7 @@ public class AuthContext implements FactoryBean<AuthContext>,
             logger.info("加载权限检查器：权限类型:'{}':检查器类：'{}'",
                     authCheckerTemp.getCheckAuthType(),
                     authCheckerTemp.getClass().getName());
-            authCheckerMapping.put(authCheckerTemp.getCheckAuthType(),
+            tempAuthCheckerMapping.put(authCheckerTemp.getCheckAuthType(),
                     authCheckerTemp);
         }
         
