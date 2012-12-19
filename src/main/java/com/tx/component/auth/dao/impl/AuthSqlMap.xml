@@ -7,7 +7,7 @@
     <!-- 根据操作员id查询操作员拥有的权限引用项 -->  
     <select id="queryItemAuthRefListByOperId"
     	parameterType="String" 
-    	resultType="com.tx.component.auth.model.BaseAuthItemRef">  
+    	resultType="com.tx.component.auth.model.DefaultAuthItemRef">  
         <![CDATA[
 			select distinct tar.authid,
 			                tar.refid,
@@ -34,7 +34,7 @@
     <!-- 查询某权限类型 -->
     <select id="queryItemAuthRefList"
     	parameterType="java.util.Map" 
-    	resultType="com.tx.component.auth.model.BaseAuthItemRef">  
+    	resultType="com.tx.component.auth.model.DefaultAuthItemRef">  
         <![CDATA[ 
 			SELECT DISTINCT TAR.AUTHID,
 			                TAR.REFID,
@@ -50,7 +50,7 @@
     </select>    
     
     <!-- 插入权限项 -->
-	<insert id="addAuthItemRef" parameterType="com.tx.component.auth.model.BaseAuthItemRef">
+	<insert id="addAuthItemRef" parameterType="com.tx.component.auth.model.DefaultAuthItemRef">
 		insert into t_auth_authref
 		  (authid, refid, authreftype, createdate, enddate, createoperid)
 		values
@@ -63,7 +63,7 @@
 	</insert>
 	
 	<!-- 删除权限项 -->
-	<delete id="delAuthItemRef" parameterType="authItemRef">
+	<delete id="delAuthItemRef" parameterType="com.tx.component.auth.model.DefaultAuthItemRef">
 		delete from t_auth_authref
 		 where refId = #{refId}
 		   and authRefType = #{authRefType}
